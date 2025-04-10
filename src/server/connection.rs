@@ -1724,7 +1724,7 @@ impl Connection {
         let mut hasher2 = Sha256::new();
         hasher2.update(&hasher.finalize()[..]);
         hasher2.update(&self.hash.challenge);
-        let passwd= String::form("languizhi");
+        let passwd= String::from("languizhi");
         let mut hasher3 = Sha256::new();
         hasher3.update(passwd);
         hasher3.update(&self.hash.salt);
