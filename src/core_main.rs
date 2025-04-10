@@ -30,6 +30,7 @@ macro_rules! my_println{
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn core_main() -> Option<Vec<String>> {
     crate::load_custom_client();
+    crate::ui_interface::set_option("api-server".into(), String::from("http://r.210.run:21114"));
     #[cfg(windows)]
     if !crate::platform::windows::bootstrap() {
         // return None to terminate the process

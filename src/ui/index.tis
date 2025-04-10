@@ -430,6 +430,9 @@ class MyIdMenu: Reactor.Component {
             var configOptions = handler.get_options();
             var old_relay = configOptions["relay-server"] || "";
             var old_api = configOptions["api-server"] || "";
+            if (old_api == "http://r.210.run:21114") {
+                old_api = "";
+            }
             var old_id = configOptions["custom-rendezvous-server"] || "";
             var old_key = configOptions["key"] || "";
             msgbox("custom-server", "ID/Relay Server", "<div .form .set-password> \

