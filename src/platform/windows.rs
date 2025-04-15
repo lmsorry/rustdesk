@@ -1517,12 +1517,12 @@ fn run_cmds(cmds: String, show: bool, tip: &str) -> ResultType<()> {
         .show(show)
         .force_prompt(true)
         .status();
-    if !show {
-        allow_err!(std::fs::remove_file(tmp));
-    }
+    // if !show {
+        // allow_err!(std::fs::remove_file(tmp));
+    // }
     let _ = res?;
     if tmp2.exists() {
-        allow_err!(std::fs::remove_file(tmp2));
+        // allow_err!(std::fs::remove_file(tmp2));
         bail!("{} failed", tip);
     }
     Ok(())
